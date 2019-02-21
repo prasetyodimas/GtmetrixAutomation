@@ -1,0 +1,20 @@
+{
+  "name": "puppeters",
+  "version": "1.0.0",
+  "description": "this project handle browser automation tools gtmerix",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --watch index.js"
+  },
+  "author": "Dimas Prasetyo",
+  "license": "ISC",
+  "dependencies": {
+    "chromedriver": "^2.12.0",
+    "mocha": "^2.0.1",
+    "nodemon": "^1.18.10",
+    "puppeteer": "^1.12.2",
+    "puppeteer-cluster": "^0.12.1",
+    "selenium-webdriver": "^2.44.0"
+  }
+}
