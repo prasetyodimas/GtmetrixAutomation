@@ -1,40 +1,40 @@
 const puppeteer = require('puppeteer'),
-      {TimeoutError} = require('puppeteer/Errors');
+      fs = require('fs'), 
+      appManifest = require('./manifest/manifest');
 
-const URLmobile ='https://gtmetrix.com/reports/www.pricebook.co.id/9wwIkfFD';
-
-async function runTrackingGtmerix() {
+console.log(utilsConf.utilsConfiguration.appUser);
+async function runTrackingGtmetrix() {
+  const browser = await puppeteer.launch({ headless:false });
+  const page = await browser.newPage();   
+  await page.setViewport({ width: 1920, height: 1080});
+  await page.setUserAgent('Mozilla/5.0 (iPhone; CPU iPhone OS 9_0_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13A404 Safari/601.1')
+  
   try{
-    const browser = await puppeteer.launch({
-      headless:false,
-    });
-    const page = await browser.newPage();
-    await page.setViewport({ width: 1920, height: 1080});
-    await page.goto(URLmobile, {waitUntil: 'load'});
-    // execute triger element
-    await page.click('.js-auth-widget-link',500);
-    await page.$eval('input[name=email]', el => el.value ='prasetyo.dimas.developer@gmail.com');
-    await page.$eval('input[name=password]', el=> el.value ='valadar123');
+    await page.goto(siteUrl.conf.urlVisit, {waitUntil: 'load', timeout: 100000})
+      .catch(function (error) {
+        throw new Error('Whoops traking gtmetrix is a timeout !');
+      }
+    );
 
-    await page.focus('input[name=email]');
-    await page.keyboard.press('Enter');
+    await page.click('.js-auth-widget-link');
+    await Promise.all([
+      console.log(utilsConf.utilsConfiguration.appUser),
+      page.$eval('input[name=email]', el => el.value = utilsConf.utilsConfiguration.appUser),
+      page.$eval('input[name=password]', el => el.value = utilsConf.utilsConfiguration.appPassword)
+    ]);
 
-    await page.waitFor(3000);
-    await page.$eval('#retest', form => form.submit());
-
-    // set browser close after finished.
-    setTimeout(function(){
-      browser.close();
-    },20000);
-
-  }catch(e){
-    if (e instanceof TimeoutError ) {
-      console.log(e);
-      browser.close();
+    try {
+      await page.waitForSelector(selector)
+    } catch (error) {
+      console.log(error("The element didn't appear."))
     }
-  } 
+
+  }catch(e) {
+    await page.close();
+    console.log(e);
+  }
 }
 
-runTrackingGtmerix();
+runTrackingGtmetrix();
 
 
