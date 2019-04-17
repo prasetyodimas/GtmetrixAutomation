@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer'),
       fs = require('fs'), 
       appManifest = require('./manifest/manifest');
 
-console.log(utilsConf.utilsConfiguration.appUser);
+// console.log(utilsConf.utilsConfiguration.appUser);
 async function runTrackingGtmetrix() {
   const browser = await puppeteer.launch({ headless:false });
   const page = await browser.newPage();   
@@ -17,18 +17,14 @@ async function runTrackingGtmetrix() {
     );
 
     await page.click('.js-auth-widget-link');
-    await Promise.all([
-      console.log(utilsConf.utilsConfiguration.appUser),
-      page.$eval('input[name=email]', el => el.value = utilsConf.utilsConfiguration.appUser),
-      page.$eval('input[name=password]', el => el.value = utilsConf.utilsConfiguration.appPassword)
-    ]);
+    await page.$eval('input[name=email]', el => el.value = 'prasetyo.dimas.developer@gmail.com');
+    await page.$eval('input[name=password]', el => el.value = 'valadar123');
 
-    try {
-      await page.waitForSelector(selector)
-    } catch (error) {
-      console.log(error("The element didn't appear."))
-    }
+    await page.focus('input[name=email]');
+    await page.keyboard.press('Enter');
 
+    await page.waitFor(3000);
+    
   }catch(e) {
     await page.close();
     console.log(e);
