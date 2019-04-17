@@ -1,10 +1,16 @@
-# JubiAtomation
+![puppeteer](https://user-images.githubusercontent.com/9084664/56286696-95c69280-6144-11e9-9891-f950e10528de.png)
 
+# GtmetrixAutomation
+ 
 
+#### Table of Content :
+
+1. Web Scrapper image using Nodejs. [ Work in progress ! ]
+2. Puppeter Webautomation [ Work in progress ! ] 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+ Work In Progress when we create a documentation
 
 ### Installing
 
@@ -42,9 +48,8 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Node Js]
+* [Puppeter]
 
 ## Contributing
 
@@ -56,9 +61,8 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Dimas Prasetyo** - *Initial work* - [GtmetrixAutomation](https://github.com/vladmir123)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
